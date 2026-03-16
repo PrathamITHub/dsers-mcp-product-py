@@ -1,0 +1,42 @@
+# Credentials & sessions
+.env
+.env.local
+.env.*.local
+*.session.json
+.session.json
+.session-cache/
+
+# MCP state
+.state/
+.state-smoke/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+Thumbs.db
