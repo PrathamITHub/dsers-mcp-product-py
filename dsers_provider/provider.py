@@ -125,6 +125,7 @@ class PrivateDsersProvider(ImportProvider):
                     "auto_inventory_update",
                     "auto_price_update",
                     "sales_channels",
+                    "store_shipping_profile",
                 ],
                 "image_strategy_modes": ["selected_only", "all_available"],
                 "pricing_rule_behavior_modes": ["keep_manual", "apply_store_pricing_rule"],

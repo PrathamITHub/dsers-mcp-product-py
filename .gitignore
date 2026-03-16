@@ -9,6 +9,7 @@
 # MCP state
 .state/
 .state-smoke/
+.state-test/
 
 # Python
 __pycache__/
