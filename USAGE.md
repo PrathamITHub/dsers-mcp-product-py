@@ -1,4 +1,4 @@
-# User Guide / 使用指南 — DSers MCP Product
+# User Guide / 使用指南 — DSers MCP Product: How to Bulk Edit Variants with MCP
 
 > [English](#english) | [中文](#中文)
 
@@ -192,7 +192,26 @@ Use these keywords in conversation and the Agent will map them to push options:
 
 ---
 
-### 7. Rules
+### 7. How to Bulk Edit Variants with MCP
+
+One of the most time-consuming tasks in dropshipping is editing product variants — adjusting prices, cleaning up AliExpress titles, removing unwanted options. With this MCP server, you can bulk edit variants using natural language:
+
+> **You say**: Import these 5 products, multiply all variant prices by 3, remove any Chinese text from titles, keep only the first 5 images.
+
+The Agent applies your rules across all variants in all products in a single batch call. No manual clicking through each variant.
+
+| Task | How to Say It |
+|------|---------------|
+| Bulk price adjustment | "multiply all prices by 2.5" / "add $8 markup to every variant" |
+| Clean AliExpress titles | "remove Chinese characters from title" / "change title to ..." |
+| Limit variants | "keep only first 3 images" / "drop the first image" |
+| Batch + rules | "import all 5 links, uniform 2x pricing, all to backend" |
+
+Rules are applied at the `prepare_import_candidate` stage and frozen as a snapshot — you can preview before pushing.
+
+---
+
+### 8. Rules
 
 You can specify rules in natural language during import. The Agent converts them to structured rule objects:
 
@@ -221,7 +240,7 @@ You can specify rules in natural language during import. The Agent converts them
 
 ---
 
-### 8. FAQ
+### 9. FAQ
 
 #### Q: Push fails with "shipping profile not found"
 
@@ -274,7 +293,7 @@ IMPORT_PROVIDER_MODULE=dsers_mcp_product.mock_provider
 
 ---
 
-### 9. Troubleshooting Checklist
+### 10. Troubleshooting Checklist
 
 When you encounter issues, check in this order:
 
@@ -477,7 +496,26 @@ Agent 会将对应的 push_options 设置为：
 
 ---
 
-### 7. 规则说明
+### 7. 如何用 MCP 批量编辑变体
+
+Dropshipping 中最耗时的操作之一就是编辑商品变体——调价格、清洗速卖通标题、删除不需要的选项。用这个 MCP 服务器，你可以通过自然语言批量编辑变体：
+
+> **你说**：导入这 5 个商品，所有变体价格乘 3，去掉标题里的中文，只保留前 5 张图。
+
+Agent 在一次批量调用中将规则应用到所有商品的所有变体，无需逐个手动点击。
+
+| 任务 | 怎么说 |
+|------|--------|
+| 批量调价 | "所有价格乘 2.5" / "每个变体加 8 美元" |
+| 清洗速卖通标题 | "去掉标题里的中文" / "标题改成 xxx" |
+| 限制变体 | "只保留前 3 张图" / "去掉第一张图" |
+| 批量 + 规则 | "导入所有 5 个链接，统一 2 倍加价，全部放后台" |
+
+规则在 `prepare_import_candidate` 阶段应用并冻结为快照——推送前可以预览确认。
+
+---
+
+### 8. 规则说明
 
 你可以在导入时通过自然语言指定规则，Agent 会转换为结构化规则对象：
 
@@ -506,7 +544,7 @@ Agent 会将对应的 push_options 设置为：
 
 ---
 
-### 8. 常见问题
+### 9. 常见问题
 
 #### Q: 推送失败提示 "shipping profile not found"
 
@@ -559,7 +597,7 @@ IMPORT_PROVIDER_MODULE=dsers_mcp_product.mock_provider
 
 ---
 
-### 9. 故障排查清单
+### 10. 故障排查清单
 
 遇到问题时按以下顺序检查：
 

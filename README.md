@@ -1,4 +1,4 @@
-# DSers MCP Product
+# DSers MCP Product — Automate AliExpress to Shopify Import
 
 > An open-source MCP server to automate DSers product import, bulk edit variants, and push to Shopify using AI.
 
