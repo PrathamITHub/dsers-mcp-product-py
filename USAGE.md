@@ -86,7 +86,7 @@ In Cursor settings, find MCP configuration (Settings → MCP) and add:
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "/absolute/path/to/dsers-mcp-product/.venv/bin/python",
       "args": ["server.py"],
       "cwd": "/absolute/path/to/dsers-mcp-product"
@@ -104,7 +104,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "/absolute/path/to/dsers-mcp-product/.venv/bin/python",
       "args": ["server.py"],
       "cwd": "/absolute/path/to/dsers-mcp-product"
@@ -390,7 +390,7 @@ python smoke_dsers.py
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "/绝对路径/dsers-mcp-product/.venv/bin/python",
       "args": ["server.py"],
       "cwd": "/绝对路径/dsers-mcp-product"
@@ -408,7 +408,7 @@ python smoke_dsers.py
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "/绝对路径/dsers-mcp-product/.venv/bin/python",
       "args": ["server.py"],
       "cwd": "/绝对路径/dsers-mcp-product"

@@ -32,7 +32,7 @@ from typing import Any, Awaitable, Callable, Dict
 from dotenv import load_dotenv
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
-from mcp.types import TextContent, Tool
+from mcp.types import CallToolResult, TextContent, Tool
 
 from dsers_mcp_product.job_store import FileJobStore
 from dsers_mcp_product.provider import load_provider
@@ -64,6 +64,7 @@ def _reply_json(data: Any) -> list[TextContent]:
 TOOLS = [
     Tool(
         name="get_rule_capabilities",
+        title="Store & Rule Discovery",
         description="Show supported rule families, stores, visibility modes, and push options for the currently loaded provider.",
         inputSchema={
             "type": "object",
@@ -75,6 +76,7 @@ TOOLS = [
     ),
     Tool(
         name="validate_rules",
+        title="Rule Validation",
         description="Validate and normalize a structured rule object against the currently loaded provider before preparing an import candidate.",
         inputSchema={
             "type": "object",
@@ -90,6 +92,7 @@ TOOLS = [
     ),
     Tool(
         name="prepare_import_candidate",
+        title="Import Products",
         description=(
             "Import products from supplier URLs and return preview bundles. "
             "Supports single mode (source_url) and batch mode (source_urls). "
@@ -106,7 +109,18 @@ TOOLS = [
                         "or an object {url, source_hint?, country?, target_store?, rules?} for per-item overrides. "
                         "When present, source_url is ignored."
                     ),
-                    "items": {},
+                    "items": {
+                        "oneOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "url": {"type": "string"},
+                                "source_hint": {"type": "string"},
+                                "country": {"type": "string"},
+                                "target_store": {"type": "string"},
+                                "rules": {"type": "object"},
+                            }, "required": ["url"]},
+                        ],
+                    },
                 },
                 "source_hint": {"type": "string", "description": "Optional source hint: auto, aliexpress, accio"},
                 "country": {"type": "string", "description": "Target country code such as US"},
@@ -122,6 +136,7 @@ TOOLS = [
     ),
     Tool(
         name="get_import_preview",
+        title="View Import Preview",
         description="Load a previously prepared preview bundle by job_id.",
         inputSchema={
             "type": "object",
@@ -131,6 +146,7 @@ TOOLS = [
     ),
     Tool(
         name="set_product_visibility",
+        title="Set Visibility",
         description="Update the requested visibility mode for a prepared job before confirmation.",
         inputSchema={
             "type": "object",
@@ -143,6 +159,7 @@ TOOLS = [
     ),
     Tool(
         name="confirm_push_to_store",
+        title="Push to Store",
         description=(
             "Push prepared drafts to store(s). Supports three modes: "
             "(1) Single: job_id + target_store; "
@@ -161,7 +178,18 @@ TOOLS = [
                         "or an object {job_id, target_store?, target_stores?, push_options?, visibility_mode?} "
                         "for per-item overrides. When present, job_id is ignored."
                     ),
-                    "items": {},
+                    "items": {
+                        "oneOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "job_id": {"type": "string"},
+                                "target_store": {"type": "string"},
+                                "target_stores": {"type": "array", "items": {"type": "string"}},
+                                "push_options": {"type": "object"},
+                                "visibility_mode": {"type": "string"},
+                            }, "required": ["job_id"]},
+                        ],
+                    },
                 },
                 "target_store": {"type": "string", "description": "Target store (shared across all items)"},
                 "target_stores": {
@@ -184,6 +212,7 @@ TOOLS = [
     ),
     Tool(
         name="get_job_status",
+        title="Check Job Status",
         description="Get the current status for a prepared or pushed job.",
         inputSchema={
             "type": "object",
@@ -215,16 +244,22 @@ async def list_tools() -> list[Tool]:
 
 
 @app.call_tool()
-async def call_tool(name: str, arguments: Dict[str, Any]) -> list[TextContent]:
+async def call_tool(name: str, arguments: Dict[str, Any]) -> CallToolResult:
     handler = _HANDLERS.get(name)
     if handler is None:
-        return _reply_json({"error": "Unknown tool", "available": sorted(_HANDLERS)})
+        return CallToolResult(
+            content=[TextContent(type="text", text=f"Unknown tool: {name}")],
+            isError=True,
+        )
 
     try:
         data = await handler(arguments or {})
-        return _reply_json(data)
+        return CallToolResult(content=_reply_json(data), isError=False)
     except Exception as exc:
-        return _reply_json({"error": str(exc)})
+        return CallToolResult(
+            content=[TextContent(type="text", text=str(exc))],
+            isError=True,
+        )
 
 
 async def main() -> None:

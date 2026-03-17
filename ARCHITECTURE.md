@@ -238,7 +238,7 @@ Cursor MCP config:
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "python",
       "args": ["server.py"],
       "cwd": "/path/to/dsers-mcp-product"
@@ -509,7 +509,7 @@ python server.py
 ```json
 {
   "mcpServers": {
-    "dropship-import": {
+    "dsers-mcp-product": {
       "command": "python",
       "args": ["server.py"],
       "cwd": "/path/to/dsers-mcp-product"
