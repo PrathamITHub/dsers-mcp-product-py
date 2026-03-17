@@ -110,7 +110,7 @@ Push prepared drafts to store(s). Supports three modes:
 ```json
 {
   "job_id": "abc-123",
-  "target_store": "newtestbaiyuxin03",
+  "target_store": "my-shopify-store",
   "push_options": { "shipping_profile_name": "DSers Shipping Profile" }
 }
 ```
@@ -120,7 +120,7 @@ Push prepared drafts to store(s). Supports three modes:
 ```json
 {
   "job_ids": ["abc-123", "def-456", "ghi-789"],
-  "target_store": "newtestbaiyuxin03"
+  "target_store": "my-shopify-store"
 }
 ```
 
@@ -131,7 +131,7 @@ Each item in `job_ids` can also be an object with per-item overrides: `{ "job_id
 ```json
 {
   "job_id": "abc-123",
-  "target_stores": ["newtestbaiyuxin03", "Officialteststorefor"]
+  "target_stores": ["my-shopify-store", "my-wix-store"]
 }
 ```
 
@@ -297,7 +297,7 @@ Standard prompts for each supported scenario. AI translates these into the corre
 ```json
 {
   "job_id": "abc-123",
-  "target_store": "newtestbaiyuxin03",
+  "target_store": "my-shopify-store",
   "push_options": { "shipping_profile_name": "DSers Shipping Profile" }
 }
 ```
@@ -307,7 +307,7 @@ Standard prompts for each supported scenario. AI translates these into the corre
 ```json
 {
   "job_ids": ["abc-123", "def-456", "ghi-789"],
-  "target_store": "newtestbaiyuxin03"
+  "target_store": "my-shopify-store"
 }
 ```
 
@@ -318,7 +318,7 @@ Standard prompts for each supported scenario. AI translates these into the corre
 ```json
 {
   "job_id": "abc-123",
-  "target_stores": ["newtestbaiyuxin03", "Officialteststorefor"]
+  "target_stores": ["my-shopify-store", "my-wix-store"]
 }
 ```
 
