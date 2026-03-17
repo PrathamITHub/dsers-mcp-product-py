@@ -1,5 +1,7 @@
 # DSers MCP Product
 
+> An open-source MCP server to automate DSers product import, bulk edit variants, and push to Shopify using AI.
+
 > [English](#english) | [中文](#中文)
 
 ---
@@ -8,7 +10,7 @@
 
 ## English
 
-An MCP server for dropshipping product import, built on [Model Context Protocol](https://modelcontextprotocol.io/). AI Agents use 7 high-level tools to complete the full workflow from supplier URL to store listing — single or batch, one store or many.
+**DSers MCP Product** is an open-source [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that lets AI Agents automate the entire DSers import workflow — from AliExpress / Alibaba / 1688 product URL to Shopify / Wix / WooCommerce store listing. Bulk import, batch edit variants, clean AliExpress titles, apply pricing rules, and push to multiple stores — all with a single sentence to your AI agent.
 
 ### Documentation
 
@@ -116,7 +118,7 @@ MIT
 
 ## 中文
 
-基于 [Model Context Protocol](https://modelcontextprotocol.io/) 的一件代发商品导入服务。AI Agent 通过 7 个高层工具，完成从供应商 URL 到店铺上架的全过程——支持单条或批量，单店或多店。
+**DSers MCP Product** 是一个开源的 [MCP（Model Context Protocol）](https://modelcontextprotocol.io/) 服务器，让 AI Agent 自动化 DSers 商品导入全流程——从速卖通 / Alibaba / 1688 商品链接到 Shopify / Wix / WooCommerce 店铺上架。批量导入、批量编辑变体、清洗速卖通标题、应用定价规则、多店推送——只需一句话。
 
 ### 文档导航
 
